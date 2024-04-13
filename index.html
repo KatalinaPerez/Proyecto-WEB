@@ -1,0 +1,264 @@
+<!-- ::: LibraryVerse ::: -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+    <title>LibraryVerse</title>
+
+</head>
+
+<body>
+
+    <header>
+        
+        <!-- ::: Barra de navegación ::: -->
+
+        <div class="container-navbar fixed-top">
+
+            <nav class="navbar container">
+                
+                <!-- ::: Logo ::: -->
+
+                <div class="container-logo">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <h1 class="logo"><a href="#">LibraryVerse</a></h1>
+                </div>
+
+                <!-- ::: Elementos de la barra ::: -->
+
+                <ul class="menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#">Libros</a></li>
+                    <li><a href="#">Comics</a></li>
+                    <li><a href="#">Mangas</a></li>
+                </ul>
+
+                <!-- ::: Usuario, Favoritos y Carrito ::: -->
+
+                <div class="container-user">
+                    <a href="login.html"><i class="fa-solid fa-user"></i></a>
+                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                    <a href="cart.html"><i class="fa-solid fa-basket-shopping"></i></a>
+                </div>
+
+                <!-- ::: Barra de busqueda ::: -->
+
+                <form class="search-form">
+                    <input type="search" placeholder="Buscar..." />
+                    <button class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main class="main-content">
+
+        <!-- ::: Carrusel ::: -->
+
+        <div id="carouselExampleCaptions" class="carousel slide">
+            <div class="row">
+                <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/1.png" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/2.png" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/3.png" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- ::: Cartas de información ::: -->
+
+        <section class="container container-features">
+            <div class="card-feature">
+                <i class="fa-solid fa-money-bills"></i>
+                <div class="feature-content">
+                    <span>Presente con mejores precios</span>
+                </div>
+            </div>
+            <div class="card-feature">
+                <i class="fa-solid fa-mobile"></i>
+                <div class="feature-content">
+                    <span>Accesibles en cualquier momento</span>
+                </div>
+            </div>
+            <div class="card-feature">
+                <i class="fa-solid fa-seedling"></i>
+                <div class="feature-content">
+                    <span>Cuidado al medio ambiente</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ::: Productos ::: -->
+
+        <section class="container all-products">
+            <h1 class="heading-1">Productos</h1>
+
+            <div class="container-products">
+                <div class="card-product">
+                    <div class="container-img">
+                        <img src="img/papelucho.jpg" alt=""/>
+                        <!--Al agregar a favoritos el producto, saldrá un mensaje de "Agregado" (popover)-->
+                        <div class="button-fav">
+                            <span>
+                                <i class="fa-regular fa-heart" 
+                                data-container="body" data-toggle="popover" data-placement="bottom" data-content="Agregado con exito"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!--Podrá ver el detalle del producto al clickear el nombre-->
+                    <div class="content-card-product">
+                        <a href="prod1.html">Papelucho</a>
+                        <span class="add-cart">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <span class="price">$9.990</span>
+                    </div>
+                </div>
+
+                <div class="card-product">
+                    <div class="container-img">
+                        <img src="img/Alicia en el pais de las maravillas.png" alt=""/>
+                        <div class="button-fav">
+                            <span>
+                                <i class="fa-regular fa-heart"
+                                data-container="body" data-toggle="popover" data-placement="bottom" data-content="Agregado con exito"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="content-card-product">
+                        <a href="prod2.html">Alicia</a>
+                        <span class="add-cart">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <span class="price">$10.990</span>
+                    </div>
+                </div>
+
+                <div class="card-product">
+                    <div class="container-img">
+                        <img src="img/Harry Potter y la piedra filosofal.png" alt=""/>
+                        <div class="button-fav">
+                            <span>
+                                <i class="fa-regular fa-heart"
+                                data-container="body" data-toggle="popover" data-placement="bottom" data-content="Agregado con exito"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="content-card-product">
+                        <a href="#">Harry Potter y la piedra filosofal</a>
+                        <span class="add-cart">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </span>
+                        <span class="price">$11.990</span>
+                    </div>
+                </div>
+
+            </div>
+            
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="container container-footer">
+            <div class="menu-footer">
+
+                <!-- ::: Contacto ::: -->
+
+                <div class="contact-info">
+                    <p class="title-footer">Información de Contacto</p>
+                    <ul>
+                        <li>Mail: libraryverse@gmail.com</li>
+                    </ul>
+                    <div class="social-icons">
+                        <span class="facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </span>
+                        <span class="x">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                        <span class="instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- ::: Información ::: -->
+
+                <div class="information">
+                    <p class="title-footer">Información</p>
+                    <ul>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Politicas de Privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        var popoverTriggerList = [].slice.call( document.querySelectorAll( '[data-toggle="popover"]' ) );
+        var popoverList = popoverTriggerList.map( function( popoverTrigger )
+        {
+            return new bootstrap.Popover( popoverTrigger );
+        } );
+    </script>
+</body>
+
+</html>
