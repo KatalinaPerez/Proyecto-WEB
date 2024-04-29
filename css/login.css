@@ -23,6 +23,7 @@ body{
     background: var(--background-color);
 }
 .form-box{
+
     margin-top: 150px;
     margin-bottom: 160px;
     position: relative;
@@ -185,4 +186,26 @@ header{
         flex-direction: column;
         gap: 0;
     }
+}
+
+.input-box input {
+    border: 2px solid #f0f0f0;
+	border-radius: 30px;
+}
+
+.input-box input:focus {
+    outline: 0;
+}
+
+.input-box.success input {
+    border-color: #09c372;
+}
+
+.input-box.error input {
+    border-color: #ff3860;
+}
+
+.input-box .error {
+    color: #ff3860;
+    font-size: 10px;
 }
