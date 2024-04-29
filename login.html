@@ -75,16 +75,17 @@
                         <header>Inicio Sesion</header>
                     </div>
                     <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Usuario o Email">
+                        <input type="text" class="input-field" placeholder="Usuario o Email" id="Usuario o Email">
                         <i class="bx bx-user"></i>
                     </div>
                     <div class="input-box">
-                        <input type="password" class="input-field" placeholder="Contraseña">
+                        <input type="password" class="input-field" placeholder="Contraseña" id="ContraseñaLg">
                         <i class="bx bx-lock-alt"></i>
                     </div>
                     <div class="input-box">
-                        <input type="submit" class="submit" value="Iniciar Sesion">
+                        <input type="submit" onclick="return enviardatosLg();" class="submit" value="Iniciar Sesion">
                     </div>
+                    <div id="errorLg"></div>
                     <div class="two-col">
                         <div class="one">
                             <input type="checkbox" id="login-check">
@@ -102,27 +103,33 @@
                         <span>¿Tienes una cuenta? <a href="#" onclick="login()">Inicia sesion</a></span>
                         <header>Resgistro</header>
                     </div>
-                    <div class="two-forms">
+                   <form id="form" action="/"> 
+                        <div class="two-forms">
+                            <div class="input-box">
+                                <input type="text" class="input-field" placeholder="Usuario" id="Usuario">
+                                <i class="bx bx-user"></i>
+                                <div class="error"></div>
+                            </div>
+                        </div>
                         <div class="input-box">
-                            <input type="text" class="input-field" placeholder="Usuario">
-                            <i class="bx bx-user"></i>
+                            <input type="email" class="input-field" placeholder="Email" id="Email">
+                            <i class="bx bx-envelope"></i>
+                            <div class="error"></div>
                         </div>
-                    </div>
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Email">
-                        <i class="bx bx-envelope"></i>
-                    </div>
-                    <div class="input-box">
-                        <input type="password" class="input-field" placeholder="Contraseña">
-                        <i class="bx bx-lock-alt"></i>
-                    </div>
-                    <div class="input-box">
-                        <input type="submit" class="submit" value="Registrar">
-                    </div>
-                        <div class="two">
-                            <label><a href="#">Terminos y Condiciones</a></label>
+                        <div class="input-box">
+                            <input type="password" class="input-field" placeholder="Contraseña" id="ContraseñaRg">
+                            <i class="bx bx-lock-alt"></i>
+                            <div class="error"></div>
                         </div>
-                    </div>
+                        <div class="input-box">
+                            <input type="submit" class="submit" value="Registrar">
+                        </div>
+                        <div id="errorRg"></div>
+                            <div class="two">
+                                <label><a href="#">Terminos y Condiciones</a></label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </main>
@@ -171,7 +178,7 @@
     </div>   
 
     
-    
+    <script src="js/validacion.js"></script>
     <script>
     
         function myMenuFunction() {
