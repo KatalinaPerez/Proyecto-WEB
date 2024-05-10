@@ -42,23 +42,23 @@ const validateInputs = () => {
 
 
     if(usernameValue === '') {
-        setError(Usuario, 'Username is required');
+        setError(Usuario, 'Nombre de usuario es requerido');
     } else {
         setSuccess(Usuario);
     }
 
     if(emailValue === '') {
-        setError(Email, 'Email is required');
+        setError(Email, 'Email es requerido');
     } else if (!isValidEmail(emailValue)) {
-        setError(Email, 'Provide a valid email address');
+        setError(Email, 'Provee un Email valido');
     } else {
         setSuccess(Email);
     }
 
     if(passwordValue === '') {
-        setError(ContraseñaRg, 'Password is required');
+        setError(ContraseñaRg, 'La contraseña es requerida');
     } else if (passwordValue.length < 8 ) {
-        setError(ContraseñaRg, 'Password must be at least 8 character.')
+        setError(ContraseñaRg, 'La contraseña  debe tener al menos un largo de 8 letras.')
     } else {
         setSuccess(ContraseñaRg);
     }
