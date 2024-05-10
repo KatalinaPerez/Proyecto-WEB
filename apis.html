@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/api.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <header>
+
+        <!-- ::: Barra de navegación ::: -->
+
+        <div class="container-navbar fixed-top">
+
+            <nav class="navbar container">
+
+                <!-- ::: Logo ::: -->
+
+                <div class="container-logo">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <h1 class="logo"><a href="#">LibraryVerse</a></h1>
+                </div>
+
+                <!-- ::: Elementos de la barra ::: -->
+
+                <ul class="menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#">Libros</a></li>
+                    <li><a href="#">Comics</a></li>
+                    <li><a href="#">Mangas</a></li>
+                </ul>
+
+                <!-- ::: Usuario, Favoritos y Carrito ::: -->
+
+                <div class="container-user">
+                    <a href="login.html"><i class="fa-solid fa-user"></i></a>
+                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                    <a href="cart.html"><i class="fa-solid fa-basket-shopping"></i></a>
+                </div>
+
+                <!-- ::: Barra de busqueda ::: -->
+
+                <form class="search-form">
+                    <input type="search" placeholder="Buscar..." />
+                    <button class="btn-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+
+            </nav>
+
+        </div>
+
+    </header>
+    <main id="Resultado">
+        <h1>Mangas</h1>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/api.js"></script>
+</body>
+
+</html>
