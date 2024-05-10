@@ -1,0 +1,131 @@
+:root {
+
+	--primary-color: #c7a17a;
+    --secondary-color: rgb(255, 242, 200);
+	--background-color: #f9f5f0;
+	--dark-color: #151515;
+
+}
+body {
+
+    /* Especifica el gradiente radial */
+    background: var(--background-color);
+    /* Ajusta el tamaño y la posición del fondo */
+    background-size: cover;
+    background-attachment: fixed;
+    /* Establece que el fondo ocupe toda la pantalla */
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    
+    /* Otras propiedades de estilo, como la fuente 
+    font-family: Arial, sans-serif;
+    color: rgb(255, 145, 0);
+    text-align: center;
+    padding-top: 20vh;*/
+
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ventana {
+    border: 1px solid#c7a17a;
+    border-radius: 5px;
+    max-width: 750px;
+    margin-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px;
+}
+
+.head-carrito{
+    background-color: #c7a17a;
+    color: #000000;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 1px;
+}
+
+.producto {
+    display:flex;
+    /*margin-bottom: 20px;*/
+    flex-direction:unset;
+    justify-content: center;
+}
+
+.img-producto img {
+    /*max-width: 200px;
+    height: auto;*/
+    max-width: 200px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.detalle-producto {
+    /*margin-left: 20px;
+    flex-grow: 1;*/
+    margin-top: 20px;
+}
+
+.select-cant {
+    margin-bottom: 10px;
+}
+
+.select-cant label {
+    display: block;
+}
+
+.btn-eliminar {
+    background-color: #c7a17a;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.btn-pagar {
+    display:flow-root;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: #6ce248;
+    color: #fff;
+    border: none;
+    padding:10px 100px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 30px;
+    margin-bottom: 200px;
+}
+
+.btn-pagar:hover {
+    background-color: #47a32b;
+    scale: 1.1;
+}
+
+/*Para hacerlo responsivo*/
+@media screen and (max-width:600px){
+    .producto{
+        flex-direction: column;
+        margin-left: 100px;
+        justify-content: center;
+    }
+    
+    .ventana{
+        display:flow-root;
+        margin-top: 150px;
+    }
+
+    .img-producto img{
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .detalle-producto{
+        margin-left: 0;
+    }
+}
