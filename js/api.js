@@ -1,40 +1,38 @@
-$(function () {
+const url = 'https://api.jikan.moe/v4/top/manga';
+
+function makeCard (character){
     
-        const settings = {
-            async: true,
-            crossDomain: true,
-            url: 'https://myanimelist.p.rapidapi.com/manga/top/all',
-            method: 'GET',
-            headers: {
-                'x-rapidapi-key': 'fc0fb70579msh955e56d05f10734p17e85cjsn0c1d06da3006',
-                'x-rapidapi-host': 'myanimelist.p.rapidapi.com',
-                'Content-Type': 'application/json'
-            }
-        };
+    const {title,synopsis} = character;
+    const contenedor = document.querySelector(".contenedor");
 
-        $.ajax(settings).done(function (response) {
-            // Obtener el elemento donde se insertarán los datos
-            var mangaList = $('#Resultado');
+    const titulo = document.createElement("h5");
+    titulo.textContent = title;
 
-            // Iterar sobre cada elemento en la respuesta y mostrar los datos
-            response.forEach(function (manga) {
-                var mangaInfo = `
-                    <div class="container-products">
-                        <div class="card-product">
-                            <div class="container-img">
-                                <img src="${manga.picture_url}" alt="Manga Cover">
-                            </div>
-                            <div class="content-card-product">
-                                <h2>Title: ${manga.title}</h2>
-                                <p><strong>Rank:</strong> ${manga.rank}</p>
-                                <p><strong>Score:</strong> ${manga.score}</p>
-                                <p><strong>Type:</strong> ${manga.type}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                `;
-                mangaList.append(mangaInfo);
-            });
-        });
-    });
+    const portada = document.createElement("img");
+    portada.src = character.images.jpg.image_url;
+
+    const resumen = document.createElement("p");
+    resumen.textContent= synopsis;
+
+    const Card = document.createElement("div");
+    Card.appendChild(titulo);
+    Card.appendChild(portada);
+    Card.appendChild(resumen);
+
+    contenedor.appendChild(Card);
+} 
+
+async function getManga(){
+    try {
+        const response = await fetch(url);
+        const {data} = await response.json();
+
+        for(let i = 0; i< data.length; i++){
+            makeCard(data[i]);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+getManga();
