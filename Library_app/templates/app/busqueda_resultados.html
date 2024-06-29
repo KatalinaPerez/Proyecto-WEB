@@ -1,0 +1,46 @@
+<!-- En Library_app/templates/search_results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Búsqueda</title>
+</head>
+<body>
+
+    <header>
+        <!-- Replica el header/navbar con el formulario de búsqueda -->
+        <!-- Puedes copiar el código del header/navbar de tu index.html -->
+    </header>
+
+    <main class="main-content">
+        <div class="container mt-4">
+            <div class="row">
+                {% for libro in libros %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        {% if libro.portada %}
+                        <img src="{{ libro.portada.url }}" class="card-img-top" alt="{{ libro.titulo }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ libro.titulo|capfirst }}</h5>
+                            <p class="card-text">{{ libro.autor }}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">${{ libro.precio|intcomma }}</h6>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No se encontraron libros que coincidan con "{{ query }}".</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <!-- Replica el footer con información de contacto e información adicional -->
+        <!-- Puedes copiar el código del footer de tus templates existentes -->
+    </footer>
+
+</body>
+</html>
