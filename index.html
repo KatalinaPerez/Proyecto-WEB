@@ -1,3 +1,5 @@
+<!-- >>> LibraryVerse <<< -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +10,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
     <title>LibraryVerse</title>
 
@@ -17,42 +19,140 @@
 <body>
 
     <!-- -------------------------------------------------- -->
-    
+
     <header>
-
         <h1>LibraryVerse</h1>
-
     </header>
 
     <!-- -------------------------------------------------- -->
 
-    <nav></nav>
+    <nav>
+        <div class="container-logo">
+            <a class="active" href="index.html"><i class="fa-solid fa-tree"></i></a>
+            <h3>LibraryVerse</h3>
+        </div>
+        <ul class="container-category">
+            <li><a href="#Libros">Libros</a></li>
+            <li><a href="#Comics">Comics</a></li>
+            <li><a href="#Mangas">Mangas</a></li>
+        </ul>
+        <form class="container-search" action="">
+            <input type="search" placeholder="Buscar...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="container-link">
+            <a href="cart.html"><i class="fa-solid fa-basket-shopping"></i></a>
+            <a href="login.html"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </nav>
 
     <!-- -------------------------------------------------- -->
 
-    <main>
-
+    <main class="main-index">
         <section id="Inicio">
-            
+            <!-- >>> Insertar: Carrusel y Banners. <<< -->
         </section>
-
-        <section id="Libros">Libros</section>
-
-        <section id="Comics">Comics</section>
-        
-        <section id="Mangas">Mangas</section>
-
+        <section id="Libros">
+            <!-- >>> Insertar: Libros. <<< -->
+            <h2>Libros</h2>
+            <div class="container-products">
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Papelucho</h5>
+                    <p>$4.990</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Papelucho</h5>
+                    <p>$4.990</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Papelucho</h5>
+                    <p>$4.990</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+            </div>
+        </section>
+        <section id="Comics">
+            <!-- >>> Insertar: Comics. <<< -->
+            <h2>Comics</h2>
+            <div class="container-products">
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Spiderman</h5>
+                    <p>$13.490</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Spiderman</h5>
+                    <p>$13.490</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Spiderman</h5>
+                    <p>$13.490</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+            </div>
+        </section>
+        <section id="Mangas">
+            <!-- >>> Insertar: Mangas. <<< -->
+            <h2>Mangas</h2>
+            <div class="container-products">
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Shin-chan</h5>
+                    <p>$99.090</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Shin-chan</h5>
+                    <p>$99.090</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+                <article class="card-product">
+                    <img src="" alt="">
+                    <h5>Shin-chan</h5>
+                    <p>$99.090</p>
+                    <button><i class="fa-solid fa-basket-shopping"></i></button>
+                </article>
+            </div>
+        </section>
     </main>
 
     <!-- -------------------------------------------------- -->
 
-    <footer></footer>
+    <footer>
+        <div class="container-info">
+            <h5>Información</h5>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=4-UbHw8eDzM&list=PLpQpolEIRhPtKIte1nTmjYcJCriNwj20L&index=8">Acerca de nosotros</a></li>
+                <li><a href="https://www.youtube.com/watch?v=4-UbHw8eDzM&list=PLpQpolEIRhPtKIte1nTmjYcJCriNwj20L&index=8">Politicas de privacidad</a></li>
+                <li><a href="https://www.youtube.com/watch?v=4-UbHw8eDzM&list=PLpQpolEIRhPtKIte1nTmjYcJCriNwj20L&index=8">Términos y condiciones</a></li>
+                <li><a href="https://www.youtube.com/watch?v=4-UbHw8eDzM&list=PLpQpolEIRhPtKIte1nTmjYcJCriNwj20L&index=8">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="container-social">
+            <h5>Redes sociales</h5>
+            <ul>
+                <li><a class="facebook" href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a class="x" href=""><i class="fa-brands fa-x-twitter"></i></a></li>
+                <li><a class="instagram" href=""><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
+        </div>
+        <div class="container-copyright">
+            <h5>LibraryVerse &copy; 2024</h5>
+        </div>
+    </footer>
 
     <!-- -------------------------------------------------- -->
-
+    
 </body>
-
-<script src="js/function_nav.js"></script>
-<script src="js/dinamic_nav&footer.js"></script>
 
 </html>
