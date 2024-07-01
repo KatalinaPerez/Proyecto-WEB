@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+
+{% block contenedor %}
+
+{% load humanize %}
+<br>
+<br><br>
+<div class="card">
+    <div class="card-body">
+        <h2>Lista de productos</h2>
+        <hr>
+        <table class="table table-striped table-hover table-responsive-sm">
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Tipo</th>
+                <th>Opciones</th>
+            </tr>
+        
+            {% for p in productos %}
+        
+            <tr>
+                <td>{{p.id}}</td>
+                <td>{{ p.titulo | title }}</td>
+                <td>{{ p.autor | title }}</td>
+                <td>${{ p.precio | intcomma }}</td>
+                <td>{{ p.categoria | title }}</td>
+                <td>{{ p.tipolibro | title }}</td>
+                <td><a href="{% url 'adminUp' p.id %}" class="btn btn-info btn-sm">Modificar</a></td>
+                <td><a href="{% url 'adminDelete' p.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>
+
+            </tr>
+        
+            {% endfor %}
+        
+        </table>
+        <a href="{% url 'adminAdd' %}" class="btn btn-primary">Agregar producto</a>
+    </div>
+</div>
+
+{% endblock %}

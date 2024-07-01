@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %} 
+{% block contenedor %} 
+<br/>
+<b/>
+
+<div class="row">
+  <div class="col-12 col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h2>Modificar producto</h2>
+        <hr/>
+
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+           {{ form }}
+          <div class="d-flex justify-content-end">
+            <input type="reset" values="Cancelar" class="btn btn-secondary" />
+            &nbsp;
+            <input type="submit" values="Modificar" class="btn btn-primary" />
+          </div>
+        </form>
+        {{ mensaje }}
+      </div>
+    </div>
+    <a href="{% url 'adminList' %}" class="btn btn-primary">Volver</a>
+  </div>
+</div>
+
+{% endblock %}

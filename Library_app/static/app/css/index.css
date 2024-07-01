@@ -1,0 +1,12 @@
+.container-features {
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.card-feature {
+    text-align: center; /* Alinea el contenido al centro si es necesario */
+    flex: 1; /* Permite que cada tarjeta ocupe un espacio igual */
+    margin: 0 10px; /* Añade márgenes entre las tarjetas para separarlas */
+    display: flex; 
+    justify-content: space-between; 
+}
