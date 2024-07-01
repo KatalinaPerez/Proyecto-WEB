@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+
+{% block js %}
+
+{% load static %}
+
+<script src="{% static 'app/js/api.js' %}"></script>
+
+{% endblock %}
+
+{% block css %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'app/css/api.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+<br>
+<section id="mangaList" class="contenedor">
+</section>
+<br>
+{% endblock %}

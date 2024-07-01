@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+
+{% block css %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'app/css/comics.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+<br>
+{% load humanize %}
+<section class="contenedor">
+    {% for p in productos %}
+    <div class="contenedor-items">
+        <div class="item">
+            <span class="titulo-item">{{p.titulo | title }}</span>
+            {% if p.portada %}
+            <img src="{{ p.portada.url }}" alt="" class="img-item">
+            {% endif %}
+            <span class="precio-item">${{p.precio | intcomma }}</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+    {% endfor %}    
+</section>
+<br>
+{% endblock %}
