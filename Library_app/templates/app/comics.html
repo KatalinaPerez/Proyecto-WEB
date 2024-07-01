@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block contenedor %}
+<br>
+{% load humanize %}
+
+<div class="contenedor-items">
+    {% for p in productos %}
+    <div class="item">
+        <h5 class="titulo-item">{{ p.titulo }}</h5>
+        {% if p.portada %}
+        <img src="{{ p.portada.url }}" alt="" class="img-item">
+        {% endif %}
+        <p class="precio-item">${{ p.precio|intcomma }}</p>
+        <form method="post" action="{% url 'agregar_al_carrito' p.id %}">
+            {% csrf_token %}
+            <button type="submit" class="boton-item">Agregar al Carrito</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+<br>
+{% endblock %}
+
+

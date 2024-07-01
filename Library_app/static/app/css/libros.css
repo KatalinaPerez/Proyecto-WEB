@@ -1,0 +1,14 @@
+/* static/app/css/custom.css */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.libros-container {
+    margin-top: 1000px; /* Ajusta este valor según la altura de tu navbar */
+}
