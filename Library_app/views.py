@@ -67,7 +67,7 @@ def mangas(request):
         }
         return render(request, 'app/mangas.html', data)
 
-@login_required
+
 @permission_required('Library_app.add_producto')
 def adminAdd(request):
 
