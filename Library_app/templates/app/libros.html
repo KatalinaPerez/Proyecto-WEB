@@ -1,14 +1,21 @@
-{% extends 'app/base.html' %} {% block css %} {% load static %}
+{% extends 'app/base.html' %}
+{% load static %}
+{% block css %} 
+<link rel="stylesheet" href="{% static 'app/css/productos.css' %}" />
+{% endblock %} 
 
-<link rel="stylesheet" href="{% static 'app/css/libros.css' %}" />
-{% endblock %} {% block contenedor %}
+{% block contenedor %}
+{% include 'app/mensaje.html' %}
 <br />
 {% load humanize %}
+
+<!-- Contenedor para mensajes -->
+<div id="mensaje" class="mensaje"></div>
 
 <div class="contenedor-items">
   {% for p in productos %}
   <div class="item">
-    <h5 class="titulo-item">{{ p.titulo }}</h5>
+    <h6 class="titulo-item">{{ p.titulo }}</h6>
     {% if p.portada %}
     <img src="{{ p.portada.url }}" alt="" class="img-item" />
     {% endif %}
@@ -21,4 +28,6 @@
   {% endfor %}
 </div>
 <br />
+
 {% endblock %}
+

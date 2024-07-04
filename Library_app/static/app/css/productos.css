@@ -1,0 +1,19 @@
+.contenedor-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Espacio entre los elementos */
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.item {
+    flex: 1 1 calc(33.333% - 32px); /* Ocupa un tercio del contenedor menos el espacio del gap */
+    box-sizing: border-box; /* Asegura que el padding y border se incluyan en el ancho y alto */
+    margin: 16px; /* Espacio alrededor de cada item */
+    max-width: calc(33.333% - 32px); /* Máximo ancho de un tercio del contenedor */
+}
+
+.img-item {
+    width: 50%;
+    height: 200px; /* Ajusta la altura de las imágenes según tus necesidades */
+    object-fit:fill; /* Ajusta la imagen para que cubra el contenedor manteniendo su relación de aspecto */
+}

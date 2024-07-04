@@ -57,10 +57,10 @@ def comics(request):
 @login_required
 def mangas(request):
         try:
-                tipo_libro = TipoLibro.objects.get(tipo='Manga')  # Obtener el objeto TipoLibro con tipo 'Libro'
-                productos = Producto.objects.filter(tipolibro=tipo_libro)  # Filtrar productos por tipo 'Libro'
+                tipo_libro = TipoLibro.objects.get(tipo='Manga')  
+                productos = Producto.objects.filter(tipolibro=tipo_libro) 
         except TipoLibro.DoesNotExist:
-                productos = Producto.objects.none()  # No hay productos si no existe el tipo 'Libro'
+                productos = Producto.objects.none()  
         
         data = {
                 'productos': productos
@@ -81,20 +81,7 @@ def adminAdd(request):
                 else:
                         data["form"] = formulario
         return render(request, 'app/adminAdd.html', data)
-@login_required
-def agregar_al_carrito(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id)
-    carrito, created = Carrito.objects.get_or_create(producto=producto)
 
-    if not created:
-        carrito.cantidad += 1
-    else:
-        carrito.cantidad = 1  # Si se crea por primera vez, establecer cantidad en 1
-
-    carrito.save()
-    messages.success(request, 'Se agregó al carrito!')
-    # Redirigir a la página anterior (libros.html)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 @login_required
 def cart(request):
     productos_en_carrito = Carrito.objects.all()
@@ -109,6 +96,22 @@ def cart(request):
         'total_carrito': total_carrito,
     }
     return render(request, 'app/cart.html', data)
+
+@login_required
+def agregar_al_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    carrito, created = Carrito.objects.get_or_create(producto=producto)
+
+    if not created:
+        carrito.cantidad += 1
+    else:
+        carrito.cantidad = 1  # Si se crea por primera vez, establecer cantidad en 1
+
+    carrito.save()
+    messages.success(request, 'Se agregó al carrito!')
+    # Redirigir a la página anterior (libros.html)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
 @login_required
 def eliminar_del_carrito(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
@@ -128,6 +131,7 @@ def eliminar_del_carrito(request, producto_id):
         messages.error(request, 'El producto no está en su carrito.')
 
     return redirect('cart')
+
 @login_required
 def pagar(request):
     
