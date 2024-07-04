@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 from .forms import ProductoForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from datetime import datetime
 
 # Create your views here.
@@ -68,6 +68,7 @@ def mangas(request):
         return render(request, 'app/mangas.html', data)
 
 @login_required
+@permission_required('Library_app.add_producto')
 def adminAdd(request):
 
         data = {
