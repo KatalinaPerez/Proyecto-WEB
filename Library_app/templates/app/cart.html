@@ -1,13 +1,17 @@
 {% extends 'app/base.html' %}
 {% load humanize %}
 {% load static %}
-{% block css %} 
+
+{% block css %}
 <link rel="stylesheet" href="{% static 'app/css/productos.css' %}" />
+<link rel="stylesheet" href="{% static 'app/css/carrito.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=" crossorigin="anonymous" />
+
 {% endblock %}
 
 {% block contenedor %}
-<br>
-<h2>Carrito de Compras</h2>
+{% include 'app/mensaje.html' %}
+<h2 class="titulo-carrito">Carrito de compra</h2>
 <div class="contenedor-items">
     {% for item in productos_en_carrito %}
     <div class="item">
@@ -16,33 +20,43 @@
         <img src="{{ item.producto.portada.url }}" alt="" class="img-item">
         {% endif %}
         <p class="precio-item">${{ item.producto.precio|intcomma }}</p>
-        <p class="cantidad-item">Cantidad: {{ item.cantidad }}</p>
-        <form action="{% url 'eliminar_del_carrito' item.producto.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Eliminar del Carrito</button>
-        </form>
+    
+        <!-- Botón de eliminar producto del carrito (basurero) -->
+        <div class="delete-icon">
+            <form action="{% url 'eliminar_todo_del_carrito' item.producto.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-delete"><i class="fas fa-trash"></i></button>
+            </form>
+        </div>
+    
+        <!-- Cantidad del producto -->
+        <div class="cantidad-item">
+            <form action="{% url 'agregar_al_carrito' item.producto.id %}" method="post" style="display: inline-block;">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <!-- Icono de suma -->
+                <button type="submit"><i class="fas fa-plus"></i></button>
+            </form>
+            <p>{{ item.cantidad }}</p>
+            <form action="{% url 'eliminar_del_carrito' item.producto.id %}" method="post" style="display: inline-block;">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="remove">
+                <!-- Icono de resta -->
+                <button type="submit"><i class="fas fa-minus"></i></button>
+            </form>
+        </div>
+    
         <p>Subtotal: ${{ item.subtotal|intcomma }}</p>
     </div>
     {% endfor %}
-    <p>Precio total del carrito: ${{ total_carrito|intcomma }}</p>
-
-    <!-- Botón para pagar -->
-    <form action="{% url 'pagar' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Pagar</button>
-    </form>
-
-    <!-- Mostrar mensajes -->
-    {% if messages %}
-    <div class="mt-3">
-        {% for message in messages %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
+    <div class="total-container">
+        <p>Total: ${{ total_carrito|intcomma }}</p>
+    
+        <!-- Botón para pagar -->
+        <form action="{% url 'pagar' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Pagar</button>
+        </form>
     </div>
-    {% endif %}
 </div>
-<br>
 {% endblock %}

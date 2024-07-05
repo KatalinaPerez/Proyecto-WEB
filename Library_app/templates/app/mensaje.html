@@ -23,11 +23,11 @@
     const mensaje = document.getElementById('mensaje');
     {% if messages %}
         {% for message in messages %}
-            mensaje.innerText = '{{ message }}';
+            mensaje.innerText = '{{ message|safe }}';
             mensaje.classList.add('mostrar');
             setTimeout(() => {
             mensaje.classList.remove('mostrar');
-            }, 2000);
+            }, 10000);
         {% endfor %}
     {% endif %}
   });

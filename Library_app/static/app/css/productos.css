@@ -1,19 +1,53 @@
+/* Ejemplo de productos.css */
 .contenedor-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px; /* Espacio entre los elementos */
-    justify-content: center; /* Centra los elementos horizontalmente */
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 30px;
+    grid-row-gap: 30px;
+    width: 100%;
+    transition: .3s;
 }
 
-.item {
-    flex: 1 1 calc(33.333% - 32px); /* Ocupa un tercio del contenedor menos el espacio del gap */
-    box-sizing: border-box; /* Asegura que el padding y border se incluyan en el ancho y alto */
-    margin: 16px; /* Espacio alrededor de cada item */
-    max-width: calc(33.333% - 32px); /* Máximo ancho de un tercio del contenedor */
+.contenedor-items .item {
+    max-width: 200px;
+    margin: auto;
+    border: 1px solid #666;
+    border-radius: 10px;
+    padding: 20px;
+    transition: .3s;
 }
 
-.img-item {
-    width: 50%;
-    height: 200px; /* Ajusta la altura de las imágenes según tus necesidades */
-    object-fit:fill; /* Ajusta la imagen para que cubra el contenedor manteniendo su relación de aspecto */
+.contenedor-items .item .img-item {
+    width: 100%;
+}
+
+.contenedor-items .item:hover {
+    box-shadow: 0 0 10px #666;
+    scale: 1.05;
+}
+
+.contenedor-items .item .titulo-item {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contenedor-items .item .precio-item {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.contenedor-items .item .boton-item {
+    display: block;
+    margin: 10px auto;
+    border: none;
+    background-color: black;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }

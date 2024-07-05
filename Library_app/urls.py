@@ -18,4 +18,5 @@ urlpatterns = [
     path('get-time/', views.get_time, name='get_time'),
     path('mangas/', mangas, name="mangas"),
     path('adminDelete/<id>/', adminDelete, name="adminDelete"),
+    path('eliminar_todo_del_carrito/<int:producto_id>/', views.eliminar_todo_del_carrito, name='eliminar_todo_del_carrito'),
 ]

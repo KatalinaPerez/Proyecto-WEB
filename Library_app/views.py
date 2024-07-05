@@ -38,6 +38,12 @@ def libros(request):
         except TipoLibro.DoesNotExist:
                 productos = Producto.objects.none()  # No hay productos si no existe el tipo 'Libro'
         
+        # Procesar la búsqueda si se envió un query
+        query = request.GET.get('q')
+        if query:
+                productos = productos.filter(
+                Q(titulo__icontains=query) | Q(autor__icontains=query)
+                )
         data = {
                 'productos': productos
         }
@@ -66,8 +72,6 @@ def mangas(request):
                 'productos': productos
         }
         return render(request, 'app/mangas.html', data)
-
-
 @permission_required('Library_app.add_producto')
 def adminAdd(request):
 
@@ -134,6 +138,16 @@ def eliminar_del_carrito(request, producto_id):
     return redirect('cart')
 
 @login_required
+def eliminar_todo_del_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    
+    # Eliminar todos los productos del carrito para este tipo de producto
+    Carrito.objects.filter(producto=producto).delete()
+    
+    messages.success(request, f'Se elimino "{producto.titulo}" del carrito.')
+    return redirect('cart')
+
+@login_required
 def pagar(request):
     
     Carrito.objects.all().delete()
@@ -154,7 +168,7 @@ def registro(request):
                         return redirect(to="index")
                 data["form"] = formulario
         return render(request, 'registration/registro.html', data)
-@login_required
+@permission_required('Library_app.view_producto')
 def adminList(request):
         productos = Producto.objects.all()
 
@@ -164,7 +178,7 @@ def adminList(request):
 
 
         return render(request, 'app/adminList.html', data)
-@login_required
+@permission_required('Library_app.upgrade_producto')
 def adminUp(request, id):
 
         producto = get_object_or_404(Producto, id=id)
@@ -182,7 +196,7 @@ def adminUp(request, id):
                 data["form"] = formulario
 
         return render(request, 'app/adminUp.html', data)
-@login_required
+@permission_required('Library_app.delete_producto')
 def adminDelete(request, id):
         producto = get_object_or_404(Producto, id=id)
         producto.delete()

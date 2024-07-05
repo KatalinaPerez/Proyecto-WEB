@@ -1,0 +1,63 @@
+/* Estilos para los iconos en los botones de cantidad */
+.titulo-carrito{
+    text-align: center;
+    font-size: 2rem; /* Ajusta el tamaño según sea necesario */
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+    color: #333; /* Ajusta el color según sea necesario */
+}
+.cantidad-item {
+    display: flex;
+    align-items: center;
+}
+
+.cantidad-item button {
+    margin: 0 5px;
+    padding: 2px;
+    font-size: 10px; /* Ajusta el tamaño del icono según sea necesario */
+    cursor: pointer;
+}
+
+.cantidad-item button i {
+    color: #681b1b; /* Color del icono */
+}
+
+/* Estilos para el icono de basurero (eliminar todo) */
+.delete-icon {
+    position: absolute;
+    bottom: 10px; /* Ajusta según sea necesario */
+    right: 10px; /* Ajusta según sea necesario */
+}
+
+.delete-icon .btn-delete {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #666; /* Color del icono */
+}
+
+.total-container {
+    position: fixed;
+    top: 50%; /* Ajusta según sea necesario para la posición vertical */
+    right: 10px; /* Ajusta según sea necesario para la posición horizontal */
+    transform: translateY(-50%);
+    background-color: #fff; /* Fondo blanco para mejor visibilidad */
+    padding: 10px;
+    border: 1px solid #ccc;
+    z-index: 999; /* Asegura que esté por encima de otros contenidos pero debajo del navbar */
+}
+
+.total-container p {
+    margin-bottom: 5px;
+}
+
+/* Ajusta el estilo del botón de pagar según sea necesario */
+.total-container .btn-primary {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.item {
+    position: relative; /* Asegura que los productos del carrito estén posicionados correctamente */
+    z-index: 1; /* Asegura que los productos del carrito estén detrás del navbar */
+}
