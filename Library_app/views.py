@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 from .forms import ProductoForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from datetime import datetime
 
 # Create your views here.
@@ -57,17 +57,18 @@ def comics(request):
 @login_required
 def mangas(request):
         try:
-                tipo_libro = TipoLibro.objects.get(tipo='Manga')  # Obtener el objeto TipoLibro con tipo 'Libro'
-                productos = Producto.objects.filter(tipolibro=tipo_libro)  # Filtrar productos por tipo 'Libro'
+                tipo_libro = TipoLibro.objects.get(tipo='Manga')  
+                productos = Producto.objects.filter(tipolibro=tipo_libro) 
         except TipoLibro.DoesNotExist:
-                productos = Producto.objects.none()  # No hay productos si no existe el tipo 'Libro'
+                productos = Producto.objects.none()  
         
         data = {
                 'productos': productos
         }
         return render(request, 'app/mangas.html', data)
 
-@login_required
+
+@permission_required('Library_app.add_producto')
 def adminAdd(request):
 
         data = {
@@ -81,20 +82,7 @@ def adminAdd(request):
                 else:
                         data["form"] = formulario
         return render(request, 'app/adminAdd.html', data)
-@login_required
-def agregar_al_carrito(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id)
-    carrito, created = Carrito.objects.get_or_create(producto=producto)
 
-    if not created:
-        carrito.cantidad += 1
-    else:
-        carrito.cantidad = 1  # Si se crea por primera vez, establecer cantidad en 1
-
-    carrito.save()
-    messages.success(request, 'Se agregó al carrito!')
-    # Redirigir a la página anterior (libros.html)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 @login_required
 def cart(request):
     productos_en_carrito = Carrito.objects.all()
@@ -109,6 +97,22 @@ def cart(request):
         'total_carrito': total_carrito,
     }
     return render(request, 'app/cart.html', data)
+
+@login_required
+def agregar_al_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    carrito, created = Carrito.objects.get_or_create(producto=producto)
+
+    if not created:
+        carrito.cantidad += 1
+    else:
+        carrito.cantidad = 1  # Si se crea por primera vez, establecer cantidad en 1
+
+    carrito.save()
+    messages.success(request, 'Se agregó al carrito!')
+    # Redirigir a la página anterior (libros.html)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
 @login_required
 def eliminar_del_carrito(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
@@ -128,6 +132,7 @@ def eliminar_del_carrito(request, producto_id):
         messages.error(request, 'El producto no está en su carrito.')
 
     return redirect('cart')
+
 @login_required
 def pagar(request):
     
@@ -149,7 +154,7 @@ def registro(request):
                         return redirect(to="index")
                 data["form"] = formulario
         return render(request, 'registration/registro.html', data)
-@login_required
+@permission_required('Library_app.view_producto')
 def adminList(request):
         productos = Producto.objects.all()
 
@@ -159,7 +164,7 @@ def adminList(request):
 
 
         return render(request, 'app/adminList.html', data)
-@login_required
+@permission_required('Library_app.upgrade_producto')
 def adminUp(request, id):
 
         producto = get_object_or_404(Producto, id=id)
@@ -177,7 +182,7 @@ def adminUp(request, id):
                 data["form"] = formulario
 
         return render(request, 'app/adminUp.html', data)
-@login_required
+@permission_required('Library_app.delete_producto')
 def adminDelete(request, id):
         producto = get_object_or_404(Producto, id=id)
         producto.delete()

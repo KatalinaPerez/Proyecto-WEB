@@ -3,24 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
     <title>Registro De Usuario</title>
   </head>
   <body>
+    {% load crispy_forms_tags %}
+    <header>
+      <h1>LibraryVerse</h1>
+    </header>
+    <!-- ::: 'nav' ::: -->
+    <nav>
+      <div class="container-logo">
+        <a class="active" href="#"><i class="fa-solid fa-book-bookmark"></i></a>
+        <h3>LibraryVerse</h3>
+      </div>
+      <ul class="container-category">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'libros' %}">Libros</a></li>
+        <li><a href="{% url 'comics' %}">Comics</a></li>
+        <li><a href="{% url 'mangas' %}">Mangas</a></li>
+      </ul>
+      <form class="container-search" action="">
+        <input type="search" placeholder="Buscar...">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+      <div class="container-link">
+        {% if user.is_authenticated %}
+        <h5>¡Hola {{user.username}}!</h5>
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Cerrar sesión</button>
+        </form>
+        {% else %}
+        <form action="{% url 'login' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Iniciar Sesion</button>
+        </form>
+        <form action="{% url 'registro' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Registrate</button>
+        </form>
+        {% endif %}
+  
+        <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
+        <a href="#"><i class="fa-solid fa-user"></i></a>
+        {% if perms.Library_app.add_producto %}
+        <a href="{% url 'adminList' %}"><i class="fa-solid fa-gear"></i></a>
+        {% endif %}
+      </div>
+    </nav>
+    <br>
+  
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
           <div class="card">
             <div class="card-body">
               <form action="" method="post">
-                {% csrf_token %} 
-                {{ form }}
+                {% csrf_token %}
+                {{ form | crispy }}
                 <a href="{% url 'index' %}">Ir al Inicio</a> |
                 <a href="{% url 'login' %}">Iniciar Sesion</a>
                 <input type="submit" value="Registrar" />
@@ -30,5 +73,55 @@
         </div>
       </div>
     </div>
+    <br>
+    <!-- ::: 'footer' ::: -->
+  
+    <footer>
+      <div class="container-column">
+        <div class="container-info">
+          <h5>Información</h5>
+          <ul>
+            <li><a href="#">Acerca de nosotros</a></li>
+            <li><a href="#">Politicas de privacidad</a></li>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="container-social">
+          <h5>Redes sociales</h5>
+          <ul>
+            <li><a class="facebook" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a class="x" href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+            <li><a class="instagram" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container-copyright">
+        <h5>LibraryVerse &copy; 2024</h5>
+        <h5 id="current-time">Loading time...</h5> <!-- Contenedor para la hora -->
+      </div>
+    </footer>
+    <!-- ::: Scripts ::: -->
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function fetchTime() {
+        $.ajax({
+          url: '{% url "get_time" %}',
+          method: 'GET',
+          success: function (data) {
+            $('#current-time').text(data.current_time);
+          },
+          error: function () {
+            $('#current-time').text('Unable to fetch time');
+          }
+        });
+      }
+
+      $(document).ready(function () {
+        fetchTime();
+        setInterval(fetchTime, 60000); // Actualizar cada minuto
+      });
+    </script>
   </body>
 </html>

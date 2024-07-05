@@ -1,8 +1,11 @@
 {% extends 'app/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block css %} 
+<link rel="stylesheet" href="{% static 'app/css/productos.css' %}" />
+{% endblock %}
 
 {% block contenedor %}
-{% load humanize %}
-
 <br>
 <h2>Carrito de Compras</h2>
 <div class="contenedor-items">
