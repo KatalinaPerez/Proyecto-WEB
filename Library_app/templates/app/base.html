@@ -43,10 +43,8 @@
             <li><a href="{% url 'comics' %}">Comics</a></li>
             <li><a href="{% url 'mangas' %}">Mangas</a></li>
         </ul>
-        <form class="container-search" action="">
-            <input type="search" placeholder="Buscar...">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
+        {% block search %}
+        {% endblock%}
         <div class="container-link">
             {% if user.is_authenticated %}
                 <h5>¡Hola {{user.username}}!</h5>

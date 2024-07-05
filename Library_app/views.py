@@ -7,6 +7,7 @@ from .forms import ProductoForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 from datetime import datetime
+from django.db.models import Q
 
 # Create your views here.
 def get_time(request):
@@ -32,46 +33,55 @@ def index(request):
 
 @login_required
 def libros(request):
-        try:
-                tipo_libro = TipoLibro.objects.get(tipo='Libro')  # Obtener el objeto TipoLibro con tipo 'Libro'
-                productos = Producto.objects.filter(tipolibro=tipo_libro)  # Filtrar productos por tipo 'Libro'
-        except TipoLibro.DoesNotExist:
-                productos = Producto.objects.none()  # No hay productos si no existe el tipo 'Libro'
+    tipo_libro = TipoLibro.objects.get(tipo='Libro')  
+    productos = Producto.objects.filter(tipolibro=tipo_libro)
+    
+    query = request.GET.get('q')
+    if query:
+        productos = productos.filter(
+            Q(titulo__icontains=query) | Q(autor__icontains=query)
+        )
         
-        # Procesar la búsqueda si se envió un query
-        query = request.GET.get('q')
-        if query:
-                productos = productos.filter(
-                Q(titulo__icontains=query) | Q(autor__icontains=query)
-                )
-        data = {
-                'productos': productos
-        }
-        return render(request, 'app/libros.html', data)
+    data = {
+        'productos': productos,
+        'query': query  # Pasar el término de búsqueda a la plantilla
+    }
+    return render(request, 'app/libros.html', data)
+
 @login_required
 def comics(request):
-        try:
-                tipo_libro = TipoLibro.objects.get(tipo='Comics')  # Obtener el objeto TipoLibro con tipo 'Libro'
-                productos = Producto.objects.filter(tipolibro=tipo_libro)  # Filtrar productos por tipo 'Libro'
-        except TipoLibro.DoesNotExist:
-                productos = Producto.objects.none()  # No hay productos si no existe el tipo 'Libro'
-        
-        data = {
-                'productos': productos
-        }
-        return render(request, 'app/comics.html', data)
+    tipo_libro = TipoLibro.objects.get(tipo='Comics')
+    productos = Producto.objects.filter(tipolibro=tipo_libro)
+    
+    query = request.GET.get('q')
+    if query:
+        productos = productos.filter(
+            Q(titulo__icontains=query) | Q(autor__icontains=query)
+        )
+    
+    data = {
+        'productos': productos,
+        'query': query  # Pasar el término de búsqueda a la plantilla
+    }
+    return render(request, 'app/comics.html', data)
+
 @login_required
 def mangas(request):
-        try:
-                tipo_libro = TipoLibro.objects.get(tipo='Manga')  
-                productos = Producto.objects.filter(tipolibro=tipo_libro) 
-        except TipoLibro.DoesNotExist:
-                productos = Producto.objects.none()  
-        
-        data = {
-                'productos': productos
-        }
-        return render(request, 'app/mangas.html', data)
+    tipo_libro = TipoLibro.objects.get(tipo='Manga')
+    productos = Producto.objects.filter(tipolibro=tipo_libro)
+    
+    query = request.GET.get('q')
+    if query:
+        productos = productos.filter(
+            Q(titulo__icontains=query) | Q(autor__icontains=query)
+        )
+    
+    data = {
+        'productos': productos,
+        'query': query  # Pasar el término de búsqueda a la plantilla
+    }
+    return render(request, 'app/mangas.html', data)
+
 @permission_required('Library_app.add_producto')
 def adminAdd(request):
 
