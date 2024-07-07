@@ -1,4 +1,5 @@
-"<!-- >>> LibraryVerse <<< -->
+<!-- >>> LibraryVerse <<< -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +16,9 @@
     
     {% block css %}
     {% endblock %}
+
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
-    
-    
+
     <title>LibraryVerse</title>
 
 </head>
@@ -53,20 +54,19 @@
                     <button type="submit">Cerrar sesión</button>
                 </form>
             {% else %}
-            <form action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Iniciar Sesion</button>
-            </form>
-            <form action="{% url 'registro' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Registrate</button>
-            </form>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Iniciar Sesion</button>
+                </form>
+                <form action="{% url 'registro' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Registrate</button>
+                </form>
             {% endif %}
 
             <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
-            <a href="#"><i class="fa-solid fa-user"></i></a>
             {% if perms.Library_app.add_producto %}
-            <a href="{% url 'adminList' %}"><i class="fa-solid fa-gear"></i></a>
+                <a href="{% url 'adminList' %}"><i class="fa-solid fa-gear"></i></a>
             {% endif %}
         </div>
     </nav>

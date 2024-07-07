@@ -1,9 +1,6 @@
 {% extends 'app/base.html' %} 
 {% block contenedor %} 
 {% load crispy_forms_tags %}
-
-<br /><br />
-
 <div class="row">
   <div class="col-12 col-md-6 offset-md-3">
     <div class="card">
@@ -15,6 +12,8 @@
           {% csrf_token %}
            {{ form | crispy }}
           <div class="d-flex justify-content-end">
+            <a href="{% url 'adminList' %}" class="btn btn-primary">Volver</a>
+            &nbsp;
             <input type="reset" values="Cancelar" class="btn btn-secondary" />
             &nbsp;
             <input type="submit" values="Guardar" class="btn btn-primary" />
@@ -24,8 +23,6 @@
         {{ mensaje }}
       </div>
     </div>
-
-    <a href="{% url 'adminList' %}" class="btn btn-primary">Volver</a>
   </div>
 </div>
 
