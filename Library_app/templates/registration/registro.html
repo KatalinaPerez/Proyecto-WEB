@@ -46,12 +46,6 @@
           <button type="submit">Registrate</button>
         </form>
         {% endif %}
-  
-        <a href="{% url 'cart' %}"><i class="fa-solid fa-basket-shopping"></i></a>
-        <a href="#"><i class="fa-solid fa-user"></i></a>
-        {% if perms.Library_app.add_producto %}
-        <a href="{% url 'adminList' %}"><i class="fa-solid fa-gear"></i></a>
-        {% endif %}
       </div>
     </nav>
     <br>

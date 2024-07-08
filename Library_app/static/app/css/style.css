@@ -135,57 +135,81 @@
 
 
     /* ::: 'footer' ::: */
-footer {
-    background-color: var(--three);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem;
-    position: relative; /* Asegura que el footer no se superponga */
-}
-
-.container-column {
-    display: grid;  
-    grid-template-columns: repeat(3, 1fr) 30rem;
-    gap: 3rem;
-    justify-content: center;
-}
-
-.container-info,
-.container-social {
-    display: flex;
-    flex-direction: column;
-}
-
-.container-info h5,
-.container-social h5 {
-    font-size: 1.2rem;
-}
-
-.container-info ul,
-.container-social ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
-.container-info ul li,
-.container-social ul li {
-    list-style: none;
-    color: var(--Hei_se_black);
-    font-size: 0.8rem;
-}
-
-.container-info ul li a,
-.container-social ul li a {
-    text-decoration: none;
-    color: var(--Hei_se_black);
-}
-
-.container-info ul li a:hover,
-.container-social ul li a:hover {
-    color: var(--Arrowhead_white);
-}
+    footer {
+        background-color: var(--three);
+        color: #fff;
+        padding: 20px 0;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    
+    .footer-column {
+        flex: 1 1 300px;
+        margin: 10px;
+    }
+    
+    .footer-info, .footer-social, .footer-copyright {
+        padding: 10px;
+    }
+    
+    h5 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    ul li {
+        margin-bottom: 5px;
+    }
+    
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: var(--Arrowhead_white);
+    }
+    
+    /* Estilos específicos para iconos de redes sociales */
+    .footer-social ul li a {
+        display: inline-block;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    
+    .footer-social ul li a:hover {
+        border-color: #333; /* Color del borde al pasar el mouse */
+    }
+    
+    .facebook {
+        color: #3b5998; /* Color de Facebook */
+    }
+    
+    .twitter {
+        color: #000000; /* Color de Twitter */
+    }
+    
+    .instagram {
+        color: #e1306c; /* Color de Instagram */
+    }
+    
+    /* Estilos para el ícono de carga */
+    .fa-brands {
+        font-size: 20px;
+        margin-right: 5px;
+    }
 
 
         /* ::: 'container-copyright' ::: */

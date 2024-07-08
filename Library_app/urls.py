@@ -5,9 +5,9 @@ from .views import index, libros, comics,cart, adminAdd, eliminar_del_carrito, r
 urlpatterns = [
     path('', index, name="index"),
     path('libros/', libros, name="libros"),
-    #path('busqueda_resultados/', views.busqueda_resultados, name="busqueda_resultados"),
     path('comics/', comics, name="comics"),
     path('cart/', cart, name="cart"),
+    path('cart/', views.cart, name='cart'),
     path('adminAdd/', adminAdd, name="adminAdd"),
     path('agregar_al_carrito/<int:producto_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
     path('cart/eliminar/<int:producto_id>/', eliminar_del_carrito, name="eliminar_del_carrito"),

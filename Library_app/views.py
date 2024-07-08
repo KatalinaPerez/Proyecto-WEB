@@ -98,7 +98,7 @@ def adminAdd(request):
         return render(request, 'app/adminAdd.html', data)
 
 @login_required
-def cart(request):
+def cart(request, mostrar_confirmacion=False):
     productos_en_carrito = Carrito.objects.all()
     total_carrito = 0
     for item in productos_en_carrito:
@@ -109,6 +109,7 @@ def cart(request):
     data = {
         'productos_en_carrito': productos_en_carrito,
         'total_carrito': total_carrito,
+        'mostrar_confirmacion': mostrar_confirmacion  # Pasar mostrar_confirmacion al contexto
     }
     return render(request, 'app/cart.html', data)
 
@@ -159,10 +160,11 @@ def eliminar_todo_del_carrito(request, producto_id):
 
 @login_required
 def pagar(request):
-    
+    # Eliminar todos los productos del carrito
     Carrito.objects.all().delete()
     messages.success(request, 'Compra realizada con éxito!')
-    return redirect('cart')
+    return redirect('cart')  
+
 
 def registro(request):
         data = {

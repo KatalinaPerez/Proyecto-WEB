@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="{% static 'app/css/productos.css' %}" />
 <link rel="stylesheet" href="{% static 'app/css/carrito.css' %}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=" crossorigin="anonymous" />
-
 {% endblock %}
 
 {% block contenedor %}
-
 {% include 'app/mensaje.html' %}
+
+
 <h2 class="titulo-carrito">Carrito de compra</h2>
 <div class="contenedor-items">
     {% for item in productos_en_carrito %}
@@ -21,7 +21,7 @@
         <img src="{{ item.producto.portada.url }}" alt="" class="img-item">
         {% endif %}
         <p class="precio-item">${{ item.producto.precio|intcomma }}</p>
-    
+
         <!-- Botón de eliminar producto del carrito (basurero) -->
         <div class="delete-icon">
             <form action="{% url 'eliminar_todo_del_carrito' item.producto.id %}" method="post">
@@ -29,7 +29,7 @@
                 <button type="submit" class="btn-delete"><i class="fas fa-trash"></i></button>
             </form>
         </div>
-    
+
         <!-- Cantidad del producto -->
         <div class="cantidad-item">
             <form action="{% url 'agregar_al_carrito' item.producto.id %}" method="post" style="display: inline-block;">
@@ -46,18 +46,45 @@
                 <button type="submit"><i class="fas fa-minus"></i></button>
             </form>
         </div>
-    
+
         <p>Subtotal: ${{ item.subtotal|intcomma }}</p>
     </div>
     {% endfor %}
     <div class="total-container">
         <p>Total: ${{ total_carrito|intcomma }}</p>
-    
-        <!-- Botón para pagar -->
-        <form action="{% url 'pagar' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-primary">Pagar</button>
-        </form>
+
+        <!-- Botón para mostrar la ventana modal -->
+        <button type="button" class="btn btn-primary" id="btn-pagar-modal">Pagar</button>
     </div>
 </div>
+
+<!-- Ventana modal -->
+<div id="modal-confirmacion" class="modal">
+    <div class="modal-content">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <div class="success-prompt-wrap">
+                <p class="success-prompt-heading">Confirmacion de compra</p>
+                <div class="success-prompt-prompt">
+                    <p>¿Estás segur@?</p>
+                </div>
+                <div class="success-button-container">
+                    <!-- Botón para confirmar el pago -->
+                    <form action="{% url 'pagar' %}" method="post" id="form-pagar">
+                        {% csrf_token %}
+                        <button type="submit" class="success-button-main">Pagar</button>
+                    </form>
+                    <!-- Botón para cancelar -->
+                    <button type="button" class="success-button-secondary" id="btn-cancelar">Seguir viendo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'app/js/carrito.js' %}"></script>
 {% endblock %}
